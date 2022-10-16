@@ -1,6 +1,7 @@
 import os
+from pprint import pprint
 import requests
-from main.utils.utils import get_random_string, Device, DashboardData
+from main.utils.utils import get_random_string, Device, DashboardData, update_ago, health_index_state_color
 import time
 import urllib.parse, urllib.request
 import json
@@ -101,16 +102,24 @@ class Netatmo_Client:
 
     #deserialize json to object
     def deserialize_devices(self, j):
+        pprint(j)
         devices = []
         for device in j:
+            pprint(device)
             dashboardata = DashboardData(json.dumps(device['dashboard_data']))
             deviceObj = Device(json.dumps(device))
             deviceObj.dashboard_data = dashboardata
-    
+
             deviceObj.id = deviceObj._id
-            # print(vars(deviceObj))
+            deviceObj.last_status_store = update_ago(deviceObj.last_status_store)
+            deviceObj.health_state, deviceObj.health_color = health_index_state_color(deviceObj.dashboard_data.health_idx)
+            print(deviceObj.health_state)
+            print(deviceObj.health_color)
+
             devices.append(deviceObj)
-            return devices
+            print(vars(deviceObj))
+            print(vars(deviceObj.dashboard_data))
+        return devices
 
 
 

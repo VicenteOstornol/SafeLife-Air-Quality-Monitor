@@ -48,6 +48,10 @@ def devices(request):
     print(request.session['email'])
 
     devices = netatmo_client.deserialize_devices(netatmo_client.get_data(request.session['access_token'])['body']['devices'])
+    print('\n\n\n')
+    print('==============DEVICES:-------------------')
+    print(devices)
+    print('\n\n\n')
     return render(request, 'devices.html', {'devices': devices})
 
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +8,17 @@
     <title>index</title>
 </head>
 <body>
-    {% comment %} logout {% endcomment %}
     <a href="{% url 'logout' %}">Logout</a>
     {% for device in devices %}
     
-    <p>{{device.dashboard_data.AbsolutePressure}}</p>
-    <p>{{device.firmware}}</p>
-    <p>{{device.id}}</p>
+    <p>name {{device.station_name}}</p>
+    <p>firmware {{device.firmware}}</p>
+    <p>id {{device.id}}</p>
+    <p>update {{device.last_status_store}}</p>
+    <p>temperature {{device.dashboard_data.Temperature}}</p>
+    <p>co2 {{device.dashboard_data.CO2}}</p>
+    <p>color {{device.health_color}}</p>
+    <p>state {{device.health_state}}</p>
     
     {% endfor %}
 </body>
