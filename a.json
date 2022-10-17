@@ -1,0 +1,35 @@
+{'_SessionBase__session_key': '690y3pflgaw4n8k57sc46e9xxo5gy895', 'accessed': True, 'modified': True, 'serializer': <class 'django.core.signing.JSONSerializer'>, 'model': <class 'django.contrib.sessions.models.Session'>, '_session_cache': {'access_token': '633cafbcf20b3413170e93a2|943bf2357790ac0b077f1e9c9dec59d8', 'refresh_token': '633cafbcf20b3413170e93a2|63460aafe9b6b24b3e639ee25b07e1ef', 'data': {'body': {'devices': [
+                    
+    
+    
+    {'_id': '70:ee: 50: 96: 9b:1e', 'station_name': 'Blanco', 'date_setup': 1664544328, 'last_setup': 1665086146, 'type': 'NHC', 'last_status_store': 1665878254, 'firmware': 59, 'wifi_status': 42, 'reachable': True, 'co2_calibrating': False, 'data_type': ['Temperature', 'CO2', 'Humidity', 'Noise', 'Pressure', 'health_idx'
+                        ], 'place': {'altitude': 566, 'city': 'Macul', 'country': 'CL', 'timezone': 'America/Santiago', 'location': [
+                                -70.617123,
+                                -33.49113
+                            ]
+                        }, 'subtype': 'PRO', 'dashboard_data': {'time_utc': 1665878253, 'Temperature': 21.9, 'CO2': 451, 'Humidity': 31, 'Noise': 52, 'Pressure': 1018.4, 'AbsolutePressure': 951.9, 'health_idx': 1, 'min_temp': 19.3, 'max_temp': 23.1, 'date_max_temp': 1665863718, 'date_min_temp': 1665830795
+                        }
+                    },
+                    {'_id': '70:ee: 50: 83: 59:e2', 'station_name': 'FABSSUR', 'date_setup': 1645458665, 'last_setup': 1658504991, 'type': 'NHC', 'last_status_store': 1665878212, 'module_name': 'Indoor', 'firmware': 59, 'wifi_status': 61, 'reachable': True, 'co2_calibrating': False, 'data_type': ['Temperature', 'CO2', 'Humidity', 'Noise', 'Pressure', 'health_idx'
+                        ], 'place': {'altitude': 566, 'city': 'Macul', 'country': 'CL', 'timezone': 'America/Santiago', 'location': [
+                                -70.617227,
+                                -33.491188
+                            ]
+                        }, 'subtype': 'PRO', 'dashboard_data': {'time_utc': 1665878211, 'Temperature': 23.2, 'CO2': 490, 'Humidity': 32, 'Noise': 49, 'Pressure': 1017.7, 'AbsolutePressure': 951.3, 'health_idx': 1, 'min_temp': 20.5, 'max_temp': 24.5, 'date_max_temp': 1665864598, 'date_min_temp': 1665828942
+                        }
+                    },
+                    {'_id': '70:ee: 50: 96: 96:d0', 'station_name': 'Diego', 'date_setup': 1665084645, 'last_setup': 1665543323, 'type': 'NHC', 'last_status_store': 1665878333, 'firmware': 59, 'wifi_status': 61, 'reachable': True, 'co2_calibrating': False, 'data_type': ['Temperature', 'CO2', 'Humidity', 'Noise', 'Pressure', 'health_idx'
+                        ], 'place': {'altitude': 549, 'city': 'San Miguel', 'country': 'CL', 'timezone': 'America/Santiago', 'location': [
+                                -70.650912,
+                                -33.493945
+                            ]
+                        }, 'subtype': 'PRO', 'dashboard_data': {'time_utc': 1665878332, 'Temperature': 23.4, 'CO2': 1403, 'Humidity': 37, 'Noise': 40, 'Pressure': 1017.5, 'AbsolutePressure': 953, 'health_idx': 4, 'min_temp': 21.8, 'max_temp': 25, 'date_max_temp': 1665863751, 'date_min_temp': 1665837991
+                        }
+                    }
+                ], 'user': {'mail': 'inacapnet@hotmail.com', 'administrative': {'lang': 'en', 'reg_locale': 'en-US', 'country': 'CL', 'unit': 0, 'windunit': 0, 'pressureunit': 0, 'feel_like_algo': 0
+                    }
+                }
+            }, 'status': 'ok', 'time_exec': 0.05830693244934082, 'time_server': 1665878750
+        }, 'email': 'inacapnet@hotmail.com'
+    }
+}
