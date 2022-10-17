@@ -39,11 +39,11 @@ def update_ago(timestamp):
     update = datetime.fromtimestamp(timestamp)
     diff = now - update
     if diff.days > 0:
-        return f"{diff.days} days ago"
+        return f"{diff.days} dias"
     elif diff.seconds > 3600:
-        return f"{diff.seconds // 3600} hours ago"
+        return f"{diff.seconds // 3600} horas"
     else:
-        return f"{diff.seconds // 60} minutes ago"
+        return f"{diff.seconds // 60} minutos"
 
 
 #Air Quality Health Index
@@ -51,13 +51,29 @@ def update_ago(timestamp):
 def health_index_state_color(health_index):
 
     if health_index == 0:
-        return "Healthy", "lightblue"
+        return "Saludable", "132,224,255" #lightblue
     elif health_index == 1:
-        return "Fine", "green"
+        return "Bueno", "180,241,208" #green
     elif health_index == 2:
-        return "Fair", "yellow"
+        return "Aceptable", "247,247,171" #yellow
     elif health_index == 3:
-        return "Poor", "orange"
+        return "Regular", "255,165,82" #orange
     elif health_index == 4:
-        return "Unhealthy", "red"
+        return "Insalubre", "226,101,101" #red
 
+
+#this functions returns the wifi status of the device in a string
+def wifi_status(wifi):
+    if wifi <= 65:
+        return "Buena conexión", 4, 'green'
+
+    elif wifi >= 66 and wifi <=80:
+        return  "Media conexión", 2, 'yellow'
+
+    elif wifi >= 81:
+        return  "Mala conexión", 1, 'red'
+
+    
+#this functions remove the ':' from the mac
+def id_format(id_):
+    return f"K{id_.replace(':', '')}"

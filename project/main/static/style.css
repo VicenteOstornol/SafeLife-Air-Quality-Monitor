@@ -1,0 +1,91 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    float: none;
+    font-family: 'Montserrat',sans-serif;
+}
+body{
+    background-color: #84e0ff;
+}
+
+/*--Cabecera--*/
+header{
+    height: 110px;
+    background-color: #ffffff;
+    float: none;
+}
+header img{
+    width: 270px;
+    height: 100px;
+    margin: auto;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+header img:hover{
+    width: 290px;
+    height: 110px;
+}
+#btnOut{
+    font-size: 2em;
+    cursor: pointer;
+    color: #1b263b;
+    transition: 0.4s;
+    text-decoration: none;
+}
+#btnOut:hover{
+    font-size: 2.3em;
+}
+
+/*--Ambientes--*/
+.sec{
+    height: 200px;
+    border-radius: 40px;
+}
+
+.amb1{
+    height: 180px;
+    border-radius: 30px;
+    margin: auto;
+    margin-top: 10px;   
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+.amb1:hover{
+    height: 190px;
+    border-radius: 35px; 
+    margin-top: 5px;    
+    font-size: 1.1em;
+}
+
+.amb1 p{
+    width: 290px;
+    height: 60px;
+    margin: auto;
+    float: none;
+    font-size: 2.5em;
+    color: #0d1b2a;
+    text-align: center;
+    /*text-shadow: -2px -2px 0 #0d1b2a, 2px 2px 0 #0d1b2a, -2px 2px 0 #0d1b2a, 2px -2px 0 #0d1b2a;*/
+}
+
+.datos{
+    font-size: 2em;
+}
+
+/*-Legrand logo-*/
+#colab{
+    width: 200px;
+    height: 100px;
+    position: fixed;
+    margin-top: -500px;
+    background-color: rgba(0,0,0,0.1);
+    box-shadow: -5px 5px;
+}
+
+#colab span{
+    width: 100px;
+    height: 70px;
+    background-image: url('img/Legrand.png');
+    background-size: 100% 100%;
+}
