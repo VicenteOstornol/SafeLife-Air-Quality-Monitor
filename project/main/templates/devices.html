@@ -20,40 +20,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
-{% comment %} <?php
-    $a = array(  /*Ambientes de ejemplo introducidos en un arreglo*/
-        array(
-          'a001' /*codigo del dispositivo*/,
-          '180,241,208' /*estado del ambiernte como color*/,
-          'Habitación 1' /*nombre del ambiente*/,
-          ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat tortor eget erat maximus, sed euismod neque pretium. Ut sed mollis ipsum, sed rutrum elit. Etiam fringilla consequat ex vitae bibendum. Donec dictum a metus quis elementum. Curabitur blandit lorem eu risus volutpat, eu euismod neque iaculis. Mauris libero enim, aliquam eu pulvinar a, ultrices quis turpis. Fusce eu eleifend ipsum, ut euismod felis. Nunc sollicitudin sem diam, at hendrerit lectus sollicitudin at. Cras ullamcorper elit vitae euismod hendrerit.
 
-        Donec eu aliquam nisl, eget consectetur ligula. Donec vehicula tellus eros, id consequat elit fermentum sed. Pellentesque vel mattis sapien. Nunc tincidunt suscipit sem ut congue. Donec porttitor consectetur nibh et lacinia. Aenean malesuada eget odio at sodales. Integer et mollis est. ' /*estado del ambiente como texto*/,
-        'Juanito Archibaldo Rodriguez Fernandez' /*nombre*/,
-        '00.000.000-K' /*rut*/,
-        'Asma' /*condicion*/,
-        '78'/*edad*/,
-        'Carla Rodriguez +569 9999 9999'/*contacto*/,
-        '25' /*temperatura*/,
-        '30'/*humedad*/,
-        '10'/*decibeles*/,
-        '300'/*c02*/,
-        'Conectado'/*estado conexión*/,
-         'Segundo Piso'/*ubicación*/),
-
-        /*los arreglos de acá abajo tienen la misma estructura, cambian algunos datos*/
-
-        array('a002','180,241,208','Comedor','Información 1','Juanito Archibaldo Rodriguez Fernandez','00.000.000-K','Asma' ,'78','Carla Rodriguez +569 9999 9999','25' /*temperatura*/,'30'/*humedad*/,'10'/*decibeles*/,'300'/*c02*/, 'Conectado','Primer piso'),
-
-        array('a003','247,247,171','Habitación 2','Información 1' /*estado general del ambiente*/,'Juanito Archibaldo Rodriguez Fernandez' /*nombre*/,'00.000.000-K' /*rut*/,'Asma' /*condicion*/,'78'/*edad*/,'Carla Rodriguez +569 9999 9999'/*contacto*/,'25' /*temperatura*/,'30'/*humedad*/,'10'/*decibeles*/,'300'/*c02*/,'Desconectado', 'Habitacion 307'),
-
-        array('a004','226,101,101','Dormitorio','Información 1' /*estado general del ambiente*/,'Juanito Archibaldo Rodriguez Fernandez' /*nombre*/,'00.000.000-K' /*rut*/,'Asma' /*condicion*/,'78'/*edad*/,'Carla Rodriguez +569 9999 9999'/*contacto*/,'25' /*temperatura*/,'30'/*humedad*/,'10'/*decibeles*/,'300'/*c02*/,'Conectado', 'Pieza 24'),
-
-        array('a005', '226,101,101','Cocina','Información 1' /*estado general del ambiente*/,'Juanito Archibaldo Rodriguez Fernandez' /*nombre*/,'00.000.000-K' /*rut*/,'Asma' /*condicion*/,'78'/*edad*/,'Carla Rodriguez +569 9999 9999'/*contacto*/,'25' /*temperatura*/,'30'/*humedad*/,'10'/*decibeles*/,'300'/*c02*/, 'Desconectado', 'Habitación 12')
-    ); 
-
-    $ambN=count($a); /*total de ambientes a mostrar, se utiliza para el ciclo que los va generando*/
-?> {% endcomment %}
 <body>
     <main>
       <!-- Cuadro de alerta -->

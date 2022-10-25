@@ -1,6 +1,4 @@
-from dotenv import load_dotenv
 import os
-load_dotenv()
 
 #Create a .env file in the same directory as this file and add the following lines:
 # CLIENT_ID='your_client_id'
