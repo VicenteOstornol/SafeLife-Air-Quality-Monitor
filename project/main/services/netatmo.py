@@ -17,13 +17,14 @@ class Netatmo_Client:
         self.refresh_token = None
         self.expires_in = None
         self.data = None
+        self.redirect_uri = 'http://3.87.190.246:8000/autorize'
 
 
 
     def login(self):
         payload = {
         'client_id': self.client_id,
-        'redirect_uri': 'http://127.0.0.1:8000/autorize',
+        'redirect_uri': self.redirect_uri,
         'scope': 'read_homecoach',
         "state": get_random_string(),
         }
@@ -42,7 +43,7 @@ class Netatmo_Client:
             'grant_type': 'authorization_code',
             'client_id': self.client_id,
             'client_secret': self.client_secret,
-            'redirect_uri': 'http://127.0.0.1:8000/autorize',
+            'redirect_uri': self.redirect_uri,
             'scope': 'read_homecoach',
             }
 

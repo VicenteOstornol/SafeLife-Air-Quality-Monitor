@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&0)o1)q$(r@)=e@57&=n6n6d5q%eh8myagzorp0fr%8y=xx3_l'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 
@@ -72,11 +72,11 @@ DATABASES = {
     'default': {
         #mysql
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'safelifedb',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
 
     }
 }
