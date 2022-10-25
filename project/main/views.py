@@ -4,9 +4,9 @@ from main.services import Netatmo_Client
 from django.http import HttpRequest, HttpResponse
 from .utils.utils import check_user
 # Create your views here.
-
+# 
 netatmo_client = Netatmo_Client()
-# Create your views here.
+# Create your views here. 
 def index(request):
     return render(request, 'login.html',)
 
