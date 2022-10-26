@@ -17,7 +17,7 @@ class Netatmo_Client:
         self.refresh_token = None
         self.expires_in = None
         self.data = None
-        self.redirect_uri = 'http://3.87.190.246:8000/autorize'
+        self.redirect_uri = 'http:54.89.218.203//autorize'
 
 
 
