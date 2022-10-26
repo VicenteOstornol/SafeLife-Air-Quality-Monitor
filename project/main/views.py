@@ -3,6 +3,8 @@ from django.shortcuts import render , redirect
 from main.services import Netatmo_Client
 from django.http import HttpRequest, HttpResponse
 from .utils.utils import check_user
+from .models import Patient
+
 # Create your views here.
 # 
 netatmo_client = Netatmo_Client()
@@ -52,9 +54,33 @@ def devices(request):
     print('==============DEVICES:-------------------')
     print(devices)
     print('\n\n\n')
+    
+    
+    
     return render(request, 'devices.html', {'devices': devices})
 
 
 def logout(request):
     request.session.flush()
     return redirect('index')
+
+
+def create_patient(request):
+    Patient.objects.create(
+        rut = request.POST['inputRut'],
+        nombre = request.POST['inputNombre'],
+        edad = request.POST['inputEdad'],
+        contacto = request.POST['inputNContacto'],
+        condicion = request.POST['inputCondicion']
+    )
+    return redirect('devices')
+
+def read_patient(request):
+    patients = Patient.objects.all()
+    print(patients)
+    return render(request, 'patientList', {'patients': patients})
+
+def update_patient(request, id):
+    patientFound = Patient.object.get(id = id)
+    patientFound.update()
+    return redirect('') #Poner redireccionamiento

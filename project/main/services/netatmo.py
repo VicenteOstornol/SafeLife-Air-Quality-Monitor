@@ -6,6 +6,7 @@ import time
 import urllib.parse, urllib.request
 import json
 from ..credentials import credentials
+from main.models import  DeviceModel
 
 
 #This class is to manage the Netatmo API 
@@ -17,7 +18,7 @@ class Netatmo_Client:
         self.refresh_token = None
         self.expires_in = None
         self.data = None
-        self.redirect_uri = 'http://3.87.190.246:8000/autorize'
+        self.redirect_uri = 'http://127.0.0.1:8000/autorize'
 
 
 
@@ -26,7 +27,7 @@ class Netatmo_Client:
         'client_id': self.client_id,
         'redirect_uri': self.redirect_uri,
         'scope': 'read_homecoach',
-        "state": get_random_string(),
+        'state': get_random_string(),
         }
 
         headers = {}
@@ -116,7 +117,15 @@ class Netatmo_Client:
             deviceObj.last_status_store = update_ago(deviceObj.last_status_store)
             deviceObj.health_state, deviceObj.health_color = health_index_state_color(deviceObj.dashboard_data.health_idx)
             deviceObj.wifi_message, deviceObj.wifi_idx, deviceObj.wifi_color = wifi_status(deviceObj.wifi_status)
+#----------------------------------------------------------------------
+            model_devices = DeviceModel.objects.all()
+            mac_adds=[]
+            for device in model_devices:
+                mac_adds.append(device.mac_ad)
 
+            if deviceObj.id not in mac_adds:
+                DeviceModel.objects.create(mac_ad=deviceObj.id)
+#-----------------------------------------------------------------------
             devices.append(deviceObj)
             print(vars(deviceObj))
             print(vars(deviceObj.dashboard_data))
