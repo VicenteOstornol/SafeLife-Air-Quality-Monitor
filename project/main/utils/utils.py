@@ -1,7 +1,7 @@
 from random import choice
 from string import ascii_lowercase, ascii_uppercase
 import json
-from ..models import User
+from main.models import User
 from datetime import datetime
 #here needs to be a function that will return a random string
 
@@ -77,3 +77,6 @@ def wifi_status(wifi):
 #this functions remove the ':' from the mac
 def id_format(id_):
     return f"K{id_.replace(':', '')}"
+
+
+

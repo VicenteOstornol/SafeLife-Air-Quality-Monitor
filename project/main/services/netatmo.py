@@ -6,7 +6,7 @@ import time
 import urllib.parse, urllib.request
 import json
 from ..credentials import credentials
-from main.models import  DeviceModel
+from main.models import  DeviceModel, Patient
 
 
 #This class is to manage the Netatmo API 
@@ -104,10 +104,10 @@ class Netatmo_Client:
 
     #deserialize json to object
     def deserialize_devices(self, j):
-        pprint(j)
+        # pprint(j)
         devices = []
         for device in j:
-            pprint(device)
+            # pprint(device)
             dashboardata = DashboardData(json.dumps(device['dashboard_data']))
             deviceObj = Device(json.dumps(device))
             deviceObj.dashboard_data = dashboardata
@@ -118,17 +118,31 @@ class Netatmo_Client:
             deviceObj.health_state, deviceObj.health_color = health_index_state_color(deviceObj.dashboard_data.health_idx)
             deviceObj.wifi_message, deviceObj.wifi_idx, deviceObj.wifi_color = wifi_status(deviceObj.wifi_status)
 #----------------------------------------------------------------------
+            #
+            # qs_patients=Patient.objects.filter(device=deviceObj._id).values().all()
+            # qs_list=list(qs_patients)
+            deviceObj.patients = list(Patient.objects.filter(device=deviceObj._id).values().all())
+            print('sssssssssssssss')
+            print(deviceObj.station_name)
+            print(deviceObj.patients)
+            # print(qs_patients)
+            # print(qs_list)
+            print('sssssssssssssss')
+
+
+
+
             model_devices = DeviceModel.objects.all()
             mac_adds=[]
             for device in model_devices:
                 mac_adds.append(device.mac_ad)
 
             if deviceObj.id not in mac_adds:
-                DeviceModel.objects.create(mac_ad=deviceObj.id)
+                DeviceModel.objects.create(mac_ad=deviceObj.id,station_name=deviceObj.station_name)
 #-----------------------------------------------------------------------
             devices.append(deviceObj)
-            print(vars(deviceObj))
-            print(vars(deviceObj.dashboard_data))
+            # print(vars(deviceObj))
+            # print(vars(deviceObj.dashboard_data))
         return devices
 
 

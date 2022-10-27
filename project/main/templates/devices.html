@@ -50,6 +50,8 @@
               <button type="button" class="btn-close col-lg-12" data-bs-dismiss="modal" aria-label="Close" style="margin-right:1%;"></button>              
             </div>
             <div class="modal-body align-items-center">
+              <a class="menuBtns" style="font-size: 1.5em; text-decoration: none;" href="{% url 'patients' %}"><span class="bi bi-people-fill"></span>  Pacientes</a>
+              <hr style="width: 100%;">
               <p class="menuBtns" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#modalPaciente"><span class="bi bi-person-plus-fill"></span>  Agregar paciente</p>
               <hr style="width: 100%;">          
               <a class="menuBtns" style="font-size: 1.5em; text-decoration: none;" href="{% url 'logout' %}"><span class="bi bi-box-arrow-right"></span>  Cerrar Sesión</a>
@@ -96,11 +98,11 @@
               </div>
             <div class="col-md-12">
               <label for="inputAmbiente" class="form-label">Seleccione un ambiente</label>
-              <select id="inputAmbiente" name="inputAmbiente" class="form-select">
+             <!-- <select id="inputAmbiente" name="inputAmbiente" class="form-select">-->
                 {% for device in devices %}
-                <option selected value="{{ device.id_front }}">{{device.station_name}}</option>
+            </br> <label><input type="checkbox" id="{{device.station_name}}" name="{{device.station_name}}" value="{{ device.id_front }}"> {{device.station_name}}</label><br>
                 {% endfor %}
-              </select>
+              <!-- </select> -->
             </div>
             <div class="col-12">
               <button type="submit" class="btn btn-primary" style="margin-left:40%; border: none;">Agregar</button>
@@ -168,49 +170,24 @@
               <!--Paciente-->
               <br>
               <fieldset>
-                <legend>Datos de los pacientes</legend>
-                        <div id="carousel{{ device.id_front }}" class="carousel slide" data-bs-ride="carousel">
-                          <div class="carousel-inner" style="width: 88%; margin-left: 6%;">
-                            {% for paciente in devices.paciente %}
-                            <div class="carousel-item">
-                              <div class="row">
-                                  <div class="col-lg-6 col-md-12 col-sm-12">Nombre: <input class="col-lg-12" type="text" id="txtnombre" name="txtnombre" value="<?php echo $a[$i][4]; /*Nombre paciente*/?>" disabled="false" style="border-color:transparent; min-width: 350px;"></div>
+                <legend>Pacientes</legend>
+                  {%for patient in device.patients%}
 
-                                  <div class="col-lg-6 col-md-12 col-sm-12">Rut: <input class="col-lg-12" type="text" id="txtrut" name="txtrut" value="<?php echo $a[$i][5]; /*rut paciente*/?>" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
-                                  <div class="col-lg-6 col-md-12 col-sm-12">Condicion: <input class="col-lg-12" type="text" id="txtcondicion" name="txtcondicion" value="<?php echo $a[$i][6]; /*condicion paciente*/?>" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
-                                  <div class="col-lg-6 col-md-12 col-sm-12">Edad: <input class="col-lg-12" type="text" id="txtedad" name="txtedad" value="<?php echo $a[$i][7]; /*edad paciente*/?>" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
-                                  <div class="col-lg-6 col-md-12 col-sm-12">Contacto: <input class="col-lg-12" type="text" id="txtcontacto" name="txtcontacto" value="<?php echo $a[$i][8]; /*contacto paciente*/?>" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
-                              </div>
-                            </div>                            
-                            {% endfor %}
-                          </div>
-                          <button class="carousel-control-prev col-md-1" type="button" data-bs-target="#carousel{{ device.id_front }}" data-bs-slide="prev" style="background-color: lightgrey; width: 5.5%;">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                          </button>
-                          <button class="carousel-control-next col-md-1" type="button" data-bs-target="#carousel{{ device.id_front }}" data-bs-slide="next" style="background-color: lightgrey; width: 5.5%;">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                          </button>
-                        </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                          <div class="col-lg-6 col-md-12 col-sm-12">Nombre: <input class="col-lg-12" type="text" id="txtnombre" name="txtnombre" value="{{patient.nombre}}" disabled="false" style="border-color:transparent; min-width: 300px;"></div>
+                          <div class="col-lg-6 col-md-12 col-sm-12">Rut: <input class="col-lg-12" type="text" id="txtrut" name="txtrut" value="{{patient.rut}}" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
+                          <div class="col-lg-6 col-md-12 col-sm-12">Condicion: <input class="col-lg-12" type="text" id="txtcondicion" name="{{patient.condicion}}" value="Condicion Paciente" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
+                          <div class="col-lg-6 col-md-12 col-sm-12">Edad: <input class="col-lg-12" type="text" id="txtedad" name="txtedad" value="{{patient.edad}}" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
+                          <div class="col-lg-6 col-md-12 col-sm-12">Contacto de Emergencia: <input class="col-lg-12" type="text" id="txtcontacto" name="txtcontacto" value="{{patient.nombre_contacto}}" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
+                          <div class="col-lg-6 col-md-12 col-sm-12">Teléfono de emergencia: <input class="col-lg-12" type="text" id="txtcontacto" name="txtcontacto" value="{{patient.numero_contacto}}" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
+                      </div>
+                    </div>
+                  </div>
+                  {%endfor%}
 
-              <!--{% for patient in patients %} -->
               
-              <!--
-              
-            
-              <legend>Datos del paciente</legend>
-              <div class="row">
-                  <div class="col-lg-6 col-md-12 col-sm-12">Nombre: <input class="col-lg-12" type="text" id="txtnombre" name="txtnombre" value="{{patients.nombre}}" disabled="false" style="border-color:transparent; min-width: 300px;"></div>
-                  <div class="col-lg-6 col-md-12 col-sm-12">Rut: <input class="col-lg-12" type="text" id="txtrut" name="txtrut" value="{{patients.rut}}" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
-                  <div class="col-lg-6 col-md-12 col-sm-12">Condicion: <input class="col-lg-12" type="text" id="txtcondicion" name="{{patients.condicion}}" value="Condicion Paciente" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
-                  <div class="col-lg-6 col-md-12 col-sm-12">Edad: <input class="col-lg-12" type="text" id="txtedad" name="txtedad" value="{{patients.edad}}" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
-                  <div class="col-lg-6 col-md-12 col-sm-12">Contacto: <input class="col-lg-12" type="text" id="txtcontacto" name="txtcontacto" value="{{patients.contacto}}" disabled="false" style="border-color:transparent; min-width: 250px;"></div>
-              </div>
-              
-              -->
-
-              <!--{% endfor %} -->
               </fieldset>
             <br>
             <br>
@@ -295,9 +272,9 @@
             </div>
           </div>
         </div>
-
+      {% endfor %}
         
-        {% endfor %}
+        
 
         </div>
     </div>
