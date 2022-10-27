@@ -122,6 +122,8 @@ class Netatmo_Client:
             # qs_patients=Patient.objects.filter(device=deviceObj._id).values().all()
             # qs_list=list(qs_patients)
             deviceObj.patients = list(Patient.objects.filter(device=deviceObj._id).values().all())
+
+            
             print('sssssssssssssss')
             print(deviceObj.station_name)
             print(deviceObj.patients)
