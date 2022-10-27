@@ -11,7 +11,7 @@
     <script type="text/javascript" src="{% static '/lib/script.js' %}"></script>
     <script type="text/javascript" src="{% static '/lib/bootstrap.bundle.min.js' %}"></script>
     <title>Safe Life</title>
-    <link rel="shortcut icon" type="image/png" href="../static/fotos/Icon.png"> <!-- icono -->
+    <link rel="shortcut icon" type="image/png" href="../static/fotos/Icon.png"> <!-- icon -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@1,300&family=Montserrat&display=swap" rel="stylesheet"> 
@@ -23,26 +23,8 @@
 
 <body>
     <main>
-      <!-- Cuadro de alerta -->
-      
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog alert alert-danger">
-          <div class="modal-content">
-            <div class="modal-header alert-heading row">
-              <button type="button" class="btn-close col-lg-12" data-bs-dismiss="modal" aria-label="Close" style="margin-right:1%;"></button>
-              <h1 class="modal-title fs-5" id="staticBackdropLabel"><span class="bi bi-exclamation-triangle-fill col-lg-12" style="font-size: 7em; text-align: center;"></span></h1>
-              
-            </div>
-            <div class="alert alert-danger modal-body" role="alert">              
-              <p style="font-size: 2.5em;">Hay un problema en el ambiente (insertar aqui el texto del ambiente correspondiente)</p>
-            </div>
-            <div class="modal-footer">
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Menú -->
+      <!-- MENU -->
       <div class="modal fade col-sm-4 col-md-4 col-lg-4 col-xl-4" id="modalMenu" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -50,7 +32,7 @@
                 <button type="button" class="btn-close col-lg-12" data-bs-dismiss="modal" aria-label="Close" style="margin-right:1%;"></button>              
             </div>
             <div class="modal-body align-items-center">
-                <a class="menuBtns" style="font-size: 1.5em; text-decoration: none;" href="{% url 'patients' %}"><span class="bi bi-people-fill"></span>  Pacientes</a>
+                <a class="menuBtns" style="font-size: 1.5em; text-decoration: none;" href="{% url 'devices' %}"><span class="bi bi-arrow-return-left"></span>  Volver</a>
                 <hr style="width: 100%;">  
                 <p class="menuBtns" style="font-size: 1.5em;" data-bs-toggle="modal" data-bs-target="#modalPaciente"><span class="bi bi-person-plus-fill"></span>  Agregar paciente</p>
                 <hr style="width: 100%;">          
@@ -59,17 +41,10 @@
           </div>
         </div>
       </div>
+      <!--END MENU-->
 
-      <header class="row d-flex align-items-center">
-        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-        <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 d-flex align-items-center"><img src="../static/fotos/Logo.png"></div>
-        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1"><a id="btnMenu" class="bi bi-list" data-bs-toggle="modal" data-bs-target="#modalMenu"></a></div>
-      </header>
-      <nav class="row d-flex align-items-center">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="background-color: #84e0ff;"></div>
-      </nav>
 
-      <!-- Formulario (dentro del menú)-->
+      <!--CREATE PATIENT MODAL-->
       <div class="modal fade" id="modalPaciente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -83,35 +58,37 @@
                 <label for="inputNombre" class="form-label">Nombre Completo</label>
                 <input type="text" class="form-control" id="inputNombre" name="inputNombre">
               </div>
-              <div class="col-12">
+              <div class="row">
+              <div class="col-6">
                 <label for="inputRut" class="form-label">Rut</label>
                 <input type="text" class="form-control" id="inputRut" name="inputRut">
               </div>
-              <div class="col-md-6">
+              <div class="col-6">
                 <label for="inputEdad" class="form-label">Edad</label>
                 <input type="text" class="form-control" id="inputEdad" name="inputEdad">
               </div>
-              <div class="col-md-6">
+            </div>
+              <div class="col-12">
                 <label for="inputCondicion" class="form-label">Condición</label>
                 <input type="text" class="form-control" id="inputCondicion" name="inputCondicion">
               </div>
               <br>
               <label for="inputContacto" class="form-label fs-5">Contacto de Emergencia</label>
-              <div class="col-md-6">
+              <div class="col-12">
                 <label for="inputNombreContacto" class="form-label">Nombre del Contacto</label>
                 <input type="text" class="form-control" id="inputNombreContacto" name="inputNombreContacto">
               </div>
-              <div class="col-md-6">
+              <div class="col-12">
                 <label for="inputNContacto" class="form-label">Numero de telefono</label>
                 <input type="text" class="form-control" id="inputNContacto" name="inputNContacto">
               </div>
-            <div class="col-md-12">
+            <div class="col-12">
               <label for="inputAmbiente" class="form-label">Seleccione un ambiente</label>
-             <!-- <select id="inputAmbiente" name="inputAmbiente" class="form-select">-->
+              <select id="inputAmbiente" name="inputAmbiente" class="form-select">
                 {% for device in devices %}
-            </br> <label><input type="checkbox" id="{{device.station_name}}" name="{{device.station_name}}" value="{{ device.id_front }}"> {{device.station_name}}</label><br>
+                <option id="{{device.station_name}}" name="{{device.station_name}}" selected value="{{ device.id }}">{{device.station_name}}</option>
                 {% endfor %}
-              <!-- </select> -->
+              </select>
             </div>
             <div class="col-12">
               <button type="submit" class="btn btn-primary" style="margin-left:40%; border: none;">Agregar</button>
@@ -123,46 +100,141 @@
           </div>
         </div>
       </div>
+      <!--END CREATE PATIENT MODAL-->
 
-      <div class="table-responsive py-3">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre Paciente</th>
-                    <th>RUT</th>
-                    <th>Edad</th>
-                    <th>Condición de Salud</th>
-                    <th>Contacto de Emergencia</th>
-                    <th>Teléfono Contacto de Emergencia</th>
-                </tr>
-            </thead>
-            <tbody>
-                {%for p in patients %}
-                <tr>
-                    <td>{{p.id}}</td>
-                    <td>{{p.nombre}}</td>
-                    <td>{{p.rut}}</td>
-                    <td>{{p.edad}}</td>
-                    <td>{{p.condicion}}</td>
-                    <td>{{p.nombre_contacto}}</td>
-                    <td>{{p.numero_contacto}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-      </div>
+
+      <!--HEADER-->
+      <header class="row d-flex align-items-center">
+        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+        <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 d-flex align-items-center"><a href="{% url 'devices' %}" style="margin: auto;"><img src="../static/fotos/Logo.png"></a></div>
+        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1"><a id="btnMenu" class="bi bi-list" data-bs-toggle="modal" data-bs-target="#modalMenu"></a></div>
+      </header>
+      <nav class="row d-flex align-items-center">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="background-color: #84e0ff;"></div>
+      </nav>
+      <!--END HEADER-->
+      
+
+      <!--CONTAINER-->
+      <div class="container">
+
+        <!--PATIENTS LIST-->
+        <div class="table-responsive py-3">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Nombre Paciente</th>
+                      <th>RUT</th>
+                      <th>Edad</th>
+                      <th>Condición de Salud</th>
+                      <th>Contacto de Emergencia</th>
+                      <th>Teléfono Contacto de Emergencia</th>
+                      <th>Modificar/Eliminar</th>
         
-    <br>
-    <!--Boton provisiorio para mostrar las alertas-->
-    <!--button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button-->
+                  </tr>
+              </thead>
+              <tbody>
+                  {%for p in patients %}
+                  <tr>
+                      <td>{{p.id}}</td>
+                      <td>{{p.nombre}}</td>
+                      <td>{{p.rut}}</td>
+                      <td>{{p.edad}}</td>
+                      <td>{{p.condicion}}</td>
+                      <td>{{p.nombre_contacto}}</td>
+                      <td>{{p.numero_contacto}}</td>
+                      <td><button data-bs-toggle="modal" data-bs-target="#modalEdit{{p.id}}" style="cursor: pointer;" class="btn btn-warning"><span class="bi bi-pencil-fill"></span></button>  |  <button class="btn btn-danger"><a href="{%url 'delete' p.id %}" style="text-decoration: none; color: #1b263b;"><span class="bi bi-trash-fill"></span></a></button></td>
 
-<a id="colab" class="position-fixed p-1" href="https://www.legrand.cl/">
-  <p id="colabP">En colaboración con</p>
-  <img id="colabImg" src="/static/fotos/Legrand.png">
-</a>
+                      <!--PATIENT UPDATE MODAL-->
+                      <div class="modal fade" id="modalEdit{{p.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">              
+                              <h1 class="modal-title fs-5" id="staticBackdropLabel"> Datos del Paciente </h1>
+                              <button type="button" class="btn-close col-lg-12" data-bs-dismiss="modal" aria-label="Close" style="margin-right:1%;"></button>              
+                            </div>
+                            <!--MODAL BODY-->
+                            <div class="modal-body">              
+                              <!--UPDATE FORM-->
+                              <form class="row g-3" action="{%url 'updatePatient' p.id%}" method="post" >{% csrf_token %}
+                                
+                                <div class="col-12">
+                                  <label for="inputNombre" class="form-label">Nombre Completo</label>
+                                  <input type="text" class="form-control" id="inputNombre" name="inputNombre" value="{{p.nombre}}">
+                                </div>
+                                
+                                <div class="row">
+                                  <div class="col-6">
+                                    <label for="inputRut" class="form-label">Rut</label>
+                                    <input type="text" class="form-control" id="inputRut" name="inputRut" value="{{p.rut}}">
+                                  </div>
+                                  <div class="col-6">
+                                    <label for="inputEdad" class="form-label">Edad</label>
+                                    <input type="text" class="form-control" id="inputEdad" name="inputEdad" value="{{p.edad}}">
+                                  </div>
+                                </div>
+                                
+                                <div class="col-12">
+                                  <label for="inputCondicion" class="form-label">Condición</label>
+                                  <input type="text" class="form-control" id="inputCondicion" name="inputCondicion" value="{{p.condicion}}">
+                                </div>
+                                
+                                <br>
+                                
+                                <label for="inputContacto" class="form-label fs-5">Contacto de Emergencia</label>
+                                
+                                <div class="col-md-12">
+                                  <label for="inputNombreContacto" class="form-label">Nombre del Contacto</label>
+                                  <input type="text" class="form-control" id="inputNombreContacto" name="inputNombreContacto" value="{{p.nombre_contacto}}">
+                                </div>
+                                
+                                <div class="col-md-12">
+                                  <label for="inputNContacto" class="form-label">Numero de telefono</label>
+                                  <input type="text" class="form-control" id="inputNContacto" name="inputNContacto" value="{{p.numero_contacto}}">
+                                </div>
+                                
+                                <div class="col-md-12">
+                                  <label for="inputAmbiente" class="form-label">Seleccione un ambiente</label>
+                                  <select id="inputAmbiente" name="inputAmbiente" class="form-select">
+                                  {% for device in devices %}
+                                    <option id="{{device.station_name}}" name="{{device.station_name}}" selected value="{{ device.id }}">{{device.station_name}}</option>
+                                  {% endfor %}
+                                  </select>
+                                </div>
+                                
+                                <br>
+                                
+                                <button type="submit" class="btn btn-success" style="margin: auto; border: none;" class="col-6">Guardar cambios</button>
+                              
+                              </form>                        
+                              <!--END UPDATE FORM-->
+                            </div>
+                            <!--END MODAL BODY-->
+                            <div class="modal-footer">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--END PATIENT UPDATE MODAL-->
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+        </div>
+        <!--END PATIENTS LIST-->
+
+
+      </div>
+      <!--END CONTAINER-->  
+
+      <br>
+    
+      <!--LEGRAND-->
+      <a id="colab" class="position-fixed p-1" href="https://www.legrand.cl/">
+        <p id="colabP">En colaboración con</p>
+        <img id="colabImg" src="/static/fotos/Legrand.png">
+      </a>
     </main>
 </body>
 </html>

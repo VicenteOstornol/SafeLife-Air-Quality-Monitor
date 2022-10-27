@@ -80,3 +80,59 @@ def id_format(id_):
 
 
 
+# def relate(dashboard_data):
+
+    
+
+#     if dashboard_data.Humidity:
+
+
+
+def mensajes(dashboard_data):
+
+    relatos = []
+
+    mensaje_humedad=""
+    humedad=dashboard_data.Humidity
+    if humedad > 70:
+        mensaje_humedad="Demaciado Humedo"
+        if humedad > 50:
+            mensaje_humedad="Zona de confort"
+            if humedad > 30:
+                mensaje_humedad="Normal"
+    mensaje_ruido=""
+    ruido=dashboard_data.Noise
+    if ruido > 140:
+        mensaje_ruido="Ruido excesivo"
+        if ruido > 90:
+            mensaje_ruido="Mucho ruido"
+            if ruido > 50:
+                mensaje_ruido="Ruido de gente"
+                if ruido > 20:
+                  mensaje_ruido="Agradable"
+    mensaje_co2=""
+    co2=dashboard_data.CO2
+    if co2 > 2100:
+        mensaje_co2="Ambiente altamente contaminado"
+        if co2 > 1500:
+            mensaje_co2="Ambiente contaminado"
+            if co2 > 1000:
+                mensaje_co2="Ambiente Normal"
+                if co2 > 800:
+                   mensaje_co2="Ambiente Bueno"
+                   if co2 > 600:
+                      mensaje_co2="Ambiente Excelente"
+
+    mensaje_temperatura=""
+    temperatura=dashboard_data.Temperature
+    if temperatura > 50:
+        mensaje_humedad="Calor Excesivo"
+        if temperatura > 35:
+            mensaje_temperatura="Demaciado calor"
+            if temperatura > 20:
+                mensaje_temperatura="Normal"
+                if temperatura > 10:
+                   mensaje_temperatura="Demaciado frio"
+
+    return ({'mensaje_humedad': mensaje_humedad, 'mensaje_ruido':mensaje_ruido, 'mensaje_co2':mensaje_co2,'mensaje_temperatura':mensaje_temperatura})
+

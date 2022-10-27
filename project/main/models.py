@@ -22,13 +22,7 @@ class Patient(models.Model):
     condicion = models.CharField(max_length=50, null=True)
     device = models.ForeignKey(DeviceModel, on_delete=models.CASCADE, null=True)
 
-# class DevicePatient(models.Model):
-#     id_Patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-#     id_Device = models.ForeignKey(DeviceModel, on_delete=models.CASCADE)
 
-# class UserDevice(models.Model):
-#     idUser = models.ForeignKey(User,on_delete=models.CASCADE)
-#     idDevice = models.ForeignKey(DeviceModel, on_delete=models.CASCADE)
 
 
 

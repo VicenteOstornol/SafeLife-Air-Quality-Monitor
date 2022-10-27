@@ -1,7 +1,7 @@
 import os
 from pprint import pprint
 import requests
-from main.utils.utils import get_random_string, Device, DashboardData, update_ago, health_index_state_color, wifi_status, id_format
+from main.utils.utils import get_random_string, Device, DashboardData, mensajes, update_ago, health_index_state_color, wifi_status, id_format
 import time
 import urllib.parse, urllib.request
 import json
@@ -118,11 +118,9 @@ class Netatmo_Client:
             deviceObj.health_state, deviceObj.health_color = health_index_state_color(deviceObj.dashboard_data.health_idx)
             deviceObj.wifi_message, deviceObj.wifi_idx, deviceObj.wifi_color = wifi_status(deviceObj.wifi_status)
 #----------------------------------------------------------------------
-            #
-            # qs_patients=Patient.objects.filter(device=deviceObj._id).values().all()
-            # qs_list=list(qs_patients)
+            deviceObj.relato = mensajes(deviceObj.dashboard_data)
             deviceObj.patients = list(Patient.objects.filter(device=deviceObj._id).values().all())
-
+            print(vars(deviceObj))
             
             print('sssssssssssssss')
             print(deviceObj.station_name)

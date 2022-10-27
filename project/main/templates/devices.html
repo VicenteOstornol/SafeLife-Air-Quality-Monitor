@@ -98,11 +98,11 @@
               </div>
             <div class="col-md-12">
               <label for="inputAmbiente" class="form-label">Seleccione un ambiente</label>
-             <!-- <select id="inputAmbiente" name="inputAmbiente" class="form-select">-->
+              <select id="inputAmbiente" name="inputAmbiente" class="form-select">
                 {% for device in devices %}
-            </br> <label><input type="checkbox" id="{{device.station_name}}" name="{{device.station_name}}" value="{{ device.id_front }}"> {{device.station_name}}</label><br>
+                <option id="{{device.station_name}}" name="{{device.station_name}}" selected value="{{ device.id }}">{{device.station_name}}</option>
                 {% endfor %}
-              <!-- </select> -->
+              </select>
             </div>
             <div class="col-12">
               <button type="submit" class="btn btn-primary" style="margin-left:40%; border: none;">Agregar</button>
@@ -265,7 +265,7 @@
                 <table id="tablaDispositivo">
                     <tr>
                       <td>Actualizado hace: <input type="text" id="txtdispositivo" name="txtdispositivo" value="{{ device.last_status_store }}" disabled="false" style="border-color:transparent;"></td>
-                      <td>Ubicacion: <input type="text" id="txtubicacion" name="txtubicacion" value="ubicacion" disabled="false" style="border-color:transparent;"></td>
+                      <td>Ubicacion: <input type="text" id="txtubicacion" name="txtubicacion" value="{{ device.station_name }}" disabled="false" style="border-color:transparent;"></td>
                     </tr>
                 </table>
               </div>
