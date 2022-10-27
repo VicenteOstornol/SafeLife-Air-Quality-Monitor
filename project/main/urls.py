@@ -7,4 +7,7 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('autorize/', views.autorize, name='autorize'),
     path('devices/', views.devices, name='devices'),
+    path('create_patient/', views.create_patient, name='createPatient'), #Testear
+    path('patients/', views.read_patient, name='patients'), #Testear
+    path('update_patient/', views.update_patient, name='updatePatient'), #Testear
 ]

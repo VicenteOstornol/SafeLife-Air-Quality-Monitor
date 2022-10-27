@@ -1,0 +1,30 @@
+name: Push-to-EC2
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploy to EC2 on master branch push
+    runs-on: ubuntu-latest
+
+    environment: safelife-env
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to Server 1
+        shell: bash
+        env:
+          AWS_SSH_KEY: '${{ secrets.AWS_SSH_KEY }}'
+          EC2_USER: ${{ secrets.EC2_USER }}
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_DNS: ${{ secrets.EC2_DNS }}
+          TARGET_DIR: ${{ secrets.TARGET_DIR }}
+          KNOW_HOST: '${{ secrets.KNOW_HOST }}'
+
+        run: |
+          chmod +x ./deploy.sh
+          ./deploy.sh
+          "
