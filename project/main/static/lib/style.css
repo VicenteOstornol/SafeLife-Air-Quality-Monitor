@@ -1,0 +1,173 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    float: none;
+    font-family: 'Montserrat',sans-serif;
+}
+body{
+    background-color: #84e0ff;
+}
+
+/*--Cabecera--*/
+header{
+    height: 110px;
+    background-color: #ffffff;
+    float: none;
+}
+header img{
+    width: 270px;
+    height: 100px;
+    margin: auto;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+header img:hover{
+    width: 290px;
+    height: 110px;
+}
+#btnMenu{
+    font-size: 2em;
+    cursor: pointer;
+    color: #1b263b;
+    transition: 0.4s;
+    text-decoration: none;
+}
+#btnMenu:hover{
+    font-size: 2.3em;
+}
+
+.menuBtns{
+    cursor: pointer;
+    color: #1b263b;
+    transition: 0.4s;
+    text-decoration: none;
+}
+.menuBtns:hover{
+    font-size: 2.5em;
+    color: black;
+}
+
+/*--Ambientes--*/
+.sec{
+    height: 200px;
+    border-radius: 40px;
+}
+
+.amb1{
+    height: 180px;
+    border-radius: 30px;
+    margin: auto;
+    margin-top: 10px;   
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+.amb1:hover{
+    height: 190px;
+    border-radius: 35px; 
+    margin-top: 5px;    
+    font-size: 1.1em;
+}
+
+.amb1 span{
+    width: 290px;
+    height: 60px;
+    margin: auto;
+    float: none;
+    font-size: 2.5em;
+    color: #0d1b2a;
+    text-align: center;
+}
+#txt{
+    width: 100%;
+}
+#txtAct{
+    font-size: 0.3em;
+    width: 100%;
+    height: 20px;
+}
+
+.datos{
+    font-size: 2em;
+}
+
+/*-Legrand logo-*/
+#colab{
+    width: 200px;
+    height: 70px;
+    position: fixed;
+    background-color: rgba(255,255,255,0.7);
+    box-shadow: 5px 5px;
+    float: right;
+    margin-left: -2px;
+    margin-top: -4vh;
+    transition: 0.2s all;
+    text-decoration: none;
+    color: #0d1b2a;
+}
+#colab:hover{
+    cursor: pointer;
+    width: 210px;
+    height: 75px;
+}
+#colab:hover > #colabImg{
+    width: 160px;
+    height: 40px;
+}
+#colab:hover > #colabP{
+    font-size: 1em;
+}
+
+#colabImg{
+    width: 140px;
+    height: 35px;    
+    background-size: 100% 100%;
+    margin-top: -15px;
+    transition: 0.2s all;
+    margin-left: 12px;
+}
+
+#colabP{
+    font-size: 0.9em;
+    margin-left: 12px;
+    transition: 0.2s all;
+}
+
+/*Responsividad*/
+@media screen and (max-width: 1000px){
+    #txt{
+        font-size: 0.7em;
+    }    
+}
+@media screen and (max-width: 800px){
+    #btnMenu{margin-left: -20px;}
+}
+@media screen and (max-width: 575px){
+    header{
+        height: 150px;
+    }
+    #btnMenu{
+        margin-top: 20px;
+        margin-left: 50vw;
+    }
+    #txt{
+        font-size: 1em;
+    }
+    #colab{
+        width: 150px;
+        height: 55px;
+        margin-top: -40vh;
+    }
+    #colabP{
+        font-size: 0.7em;
+    }
+    #colabImg{
+        width: 100px;
+        height: 25px;
+    }
+}
+@media screen and (max-width: 400px){
+    #colab{
+        margin-top: -60vh;
+    }
+}
