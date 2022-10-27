@@ -22,20 +22,13 @@ def autorize(request: HttpRequest):
     netatmo_client.access_token(code)
     data = netatmo_client.get_data(netatmo_client.access_token_)
 
-    #create a session with the tokens
+
+
     request.session['access_token'] = netatmo_client.access_token_
     request.session['refresh_token'] = netatmo_client.refresh_token
-
-    print(request.session['access_token'])
-
-    
-    # netatmo_client.refresh_token
-
     request.session['email'] = data['body']['user']['mail']
     check_user(request.session['email'])
 
-    print(request.session.__dict__)
-    # pprint.pprint(data)
 
     return redirect('devices')
 
@@ -45,17 +38,12 @@ def login_netatmo(request):
 
 
 def devices(request):
-    # print(request.session['access_token'])
-    # print(request.session['refresh_token'])
-    # print(request.session['email'])
+    if 'access_token' in request.session:
+        devices = netatmo_client.deserialize_devices(netatmo_client.get_data(request.session['access_token'])['body']['devices'])
+        return render(request, 'devices.html', {'devices': devices})
+    else:
+        return redirect('index')
 
-    devices = netatmo_client.deserialize_devices(netatmo_client.get_data(request.session['access_token'])['body']['devices'])
-    # print('\n\n\n')
-    # print('==============DEVICES:-------------------')
-    # print(devices)
-    # print('\n\n\n')
-
-    return render(request, 'devices.html', {'devices':devices})
 
 
 def logout(request):
@@ -70,7 +58,8 @@ def create_patient(request):
         edad = request.POST['inputEdad'],
         numero_contacto = request.POST['inputNContacto'],
         nombre_contacto = request.POST['inputNombreContacto'],
-        condicion = request.POST['inputCondicion']
+        condicion = request.POST['inputCondicion'],
+        device = DeviceModel.objects.get(mac_ad=request.POST['inputAmbiente'])
     )
  
     print(request.POST)
@@ -80,24 +69,18 @@ def create_patient(request):
 
 def read_patient(request):
     patients = Patient.objects.all()
-    print(patients)
     return render(request, 'patients.html', {'patients': patients})
 
 def update_patient(request, id):
     patientFound = Patient.objects.get(id=id)
     formulario = Patient(request.POST or None, instance=patientFound)
     if formulario.is_valid() and request.method == 'POST':
-        formulario.update()
-        return redirect('devices')
+        formulario.save()
+        return redirect('patients')
     return render(request,'devices')
 
 def delete_patient(request, id):
     patientDelete = Patient.objects.get(id = id)
     patientDelete.delete()
-    return redirect('devices.html')
+    return redirect('patients')
 
-#def devices_paciente(request):
-#    
-#    return render(device_paciente)
-#
-#

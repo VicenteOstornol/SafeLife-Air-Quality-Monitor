@@ -107,11 +107,11 @@
               </div>
             <div class="col-md-12">
               <label for="inputAmbiente" class="form-label">Seleccione un ambiente</label>
-             <!-- <select id="inputAmbiente" name="inputAmbiente" class="form-select">-->
-                {% for device in devices %}
-            </br> <label><input type="checkbox" id="{{device.station_name}}" name="{{device.station_name}}" value="{{ device.id_front }}"> {{device.station_name}}</label><br>
-                {% endfor %}
-              <!-- </select> -->
+              <select id="inputAmbiente" name="inputAmbiente" class="form-select">
+                 {% for device in devices %}
+                 <option id="{{device.station_name}}" name="{{device.station_name}}" selected value="{{ device.id_front }}">{{device.station_name}}</option>
+                 {% endfor %}
+               </select>
             </div>
             <div class="col-12">
               <button type="submit" class="btn btn-primary" style="margin-left:40%; border: none;">Agregar</button>
@@ -154,10 +154,7 @@
       </div>
         
     <br>
-    <!--Boton provisiorio para mostrar las alertas-->
-    <!--button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button-->
+
 
 <a id="colab" class="position-fixed p-1" href="https://www.legrand.cl/">
   <p id="colabP">En colaboración con</p>

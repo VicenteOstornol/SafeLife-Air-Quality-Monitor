@@ -1,6 +1,3 @@
-from email.policy import default
-from enum import unique
-import uuid
 from django.db import models
 #uid = models.AutoField(primary_key=True)
 # Create your models here.
@@ -21,15 +18,6 @@ class Patient(models.Model):
     nombre_contacto = models.CharField(max_length=50, null=True)
     condicion = models.CharField(max_length=50, null=True)
     device = models.ForeignKey(DeviceModel, on_delete=models.CASCADE, null=True)
-
-# class DevicePatient(models.Model):
-#     id_Patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-#     id_Device = models.ForeignKey(DeviceModel, on_delete=models.CASCADE)
-
-# class UserDevice(models.Model):
-#     idUser = models.ForeignKey(User,on_delete=models.CASCADE)
-#     idDevice = models.ForeignKey(DeviceModel, on_delete=models.CASCADE)
-
 
 
 
