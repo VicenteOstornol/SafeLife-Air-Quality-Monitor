@@ -18,7 +18,7 @@ class Netatmo_Client:
         self.refresh_token = None
         self.expires_in = None
         self.data = None
-        self.redirect_uri = 'http://127.0.0.1:8000/autorize'
+        self.redirect_uri = os.getenv('HOST_NAME')+'/autorize'
 
 
 
@@ -104,10 +104,8 @@ class Netatmo_Client:
 
     #deserialize json to object
     def deserialize_devices(self, j):
-        # pprint(j)
         devices = []
         for device in j:
-            # pprint(device)
             dashboardata = DashboardData(json.dumps(device['dashboard_data']))
             deviceObj = Device(json.dumps(device))
             deviceObj.dashboard_data = dashboardata
@@ -117,23 +115,11 @@ class Netatmo_Client:
             deviceObj.last_status_store = update_ago(deviceObj.last_status_store)
             deviceObj.health_state, deviceObj.health_color = health_index_state_color(deviceObj.dashboard_data.health_idx)
             deviceObj.wifi_message, deviceObj.wifi_idx, deviceObj.wifi_color = wifi_status(deviceObj.wifi_status)
-#----------------------------------------------------------------------
-            #
-            # qs_patients=Patient.objects.filter(device=deviceObj._id).values().all()
-            # qs_list=list(qs_patients)
             deviceObj.patients = list(Patient.objects.filter(device=deviceObj._id).values().all())
 
             
-            print('sssssssssssssss')
-            print(deviceObj.station_name)
-            print(deviceObj.patients)
-            # print(qs_patients)
-            # print(qs_list)
-            print('sssssssssssssss')
 
-
-
-
+#--------------------------------------------------------------
             model_devices = DeviceModel.objects.all()
             mac_adds=[]
             for device in model_devices:
@@ -141,10 +127,7 @@ class Netatmo_Client:
 
             if deviceObj.id not in mac_adds:
                 DeviceModel.objects.create(mac_ad=deviceObj.id,station_name=deviceObj.station_name)
-#-----------------------------------------------------------------------
             devices.append(deviceObj)
-            # print(vars(deviceObj))
-            # print(vars(deviceObj.dashboard_data))
         return devices
 
 
