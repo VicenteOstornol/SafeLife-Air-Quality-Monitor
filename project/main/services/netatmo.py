@@ -1,7 +1,7 @@
 import os
 from pprint import pprint
 import requests
-from main.utils.utils import get_random_string, Device, DashboardData, update_ago, health_index_state_color, wifi_status, id_format
+from main.utils.utils import get_random_string, Device, DashboardData, update_ago, health_index_state_color, wifi_status, id_format, status_message
 import time
 import urllib.parse, urllib.request
 import json
@@ -105,6 +105,14 @@ class Netatmo_Client:
     #deserialize json to object
     def deserialize_devices(self, j):
         devices = []
+        mac_adds=[]
+        model_devices = DeviceModel.objects.all()
+
+        
+        for device in model_devices:
+            mac_adds.append(device.mac_ad)
+
+        
         for device in j:
             dashboardata = DashboardData(json.dumps(device['dashboard_data']))
             deviceObj = Device(json.dumps(device))
@@ -116,14 +124,12 @@ class Netatmo_Client:
             deviceObj.health_state, deviceObj.health_color = health_index_state_color(deviceObj.dashboard_data.health_idx)
             deviceObj.wifi_message, deviceObj.wifi_idx, deviceObj.wifi_color = wifi_status(deviceObj.wifi_status)
             deviceObj.patients = list(Patient.objects.filter(device=deviceObj._id).values().all())
+            deviceObj.status_message, deviceObj.message_advice = status_message(deviceObj.dashboard_data.health_idx)
+            deviceObj.city = device['place']['city']
 
             
 
 #--------------------------------------------------------------
-            model_devices = DeviceModel.objects.all()
-            mac_adds=[]
-            for device in model_devices:
-                mac_adds.append(device.mac_ad)
 
             if deviceObj.id not in mac_adds:
                 DeviceModel.objects.create(mac_ad=deviceObj.id,station_name=deviceObj.station_name)

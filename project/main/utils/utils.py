@@ -80,3 +80,20 @@ def id_format(id_):
 
 
 
+#this function returns the messages of the status of the device and give an advice
+def status_message(health_state):
+    if health_state == 0:
+        return "Saludable", "El ambiente es saludable. Nada que reportar, todo esta perfecto, sigue así"
+
+    elif health_state == 1:
+        return "Bueno", "El ambiente está bien, pero no excelente. Si puedes, abre las ventanas para que entre aire fresco, los abuelos lo agradecerán."
+
+    elif health_state == 2:
+        return "Aceptable", "El ambiente es aceptable, pero podria estar mejor. ¿Has pensado en limpiar los filtros del aire acondicionado?"
+
+    elif health_state == 3:
+        return "Regular", "El ambiente es regular. Hay que empezar a preocuparse, el ambiente no es bueno. Las plantas ayudan a purificar el aire y aportan oxigeno, además de que son bonitas."
+
+    elif health_state == 4:
+        return "Insalubre", "El ambiente es insalubre. Las personas a tu cargo pueden estar en riesgo, ventile el ambiente. La tercer edad es más sensible a los cambios de temperatura y humedad, por lo que es importante mantener un ambiente saludable."
+

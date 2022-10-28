@@ -14,14 +14,14 @@ header{
     background-color: #ffffff;
     float: none;
 }
-header img{
+header img, header a{
     width: 270px;
     height: 100px;
     margin: auto;
     cursor: pointer;
     transition: 0.2s all;
 }
-header img:hover{
+header img:hover, header a:hover{
     width: 290px;
     height: 110px;
 }

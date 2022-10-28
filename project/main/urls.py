@@ -9,5 +9,6 @@ urlpatterns = [
     path('devices/', views.devices, name='devices'),
     path('create_patient/', views.create_patient, name='createPatient'), #Testear
     path('patients/', views.read_patient, name='patients'), #Testear
-    path('update_patient/', views.update_patient, name='updatePatient'), #Testear
+    path('update_patient/<int:pk>', views.update_patient, name='updatePatient', ), #Testear
+    path('delete/<int:pk>',views.delete_patient,name='delete')
 ]
